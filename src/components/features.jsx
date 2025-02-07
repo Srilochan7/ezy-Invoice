@@ -75,7 +75,7 @@ const Features = () => {
           </button>
           <div className="text-center mb-12">
             <h2 className="text-5xl font-bold mb-4">
-              Effortless invoicing<br />management in 3 steps
+              Effortless Invoice<br />management in 3 steps
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Follow these simple steps to optimize, organize, and manage your invoices with ease.
