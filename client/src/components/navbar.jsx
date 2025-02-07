@@ -20,8 +20,13 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl flex items-center justify-between">
         {/* Logo */}
         <div className="text-white text-xl font-bold cursor-pointer">
-          ezy Invoice
-        </div>
+  <img 
+    src="../assets/nav.png" 
+    alt="Ezy Invoice Logo" 
+    className="w-25 h-auto transition-transform duration-300 ease-in-out hover:scale-110"
+  />
+</div>
+
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6 animate__animated animate__fadeIn">
