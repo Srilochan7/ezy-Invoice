@@ -1,5 +1,7 @@
-﻿# ezy-Invoice
+﻿*ezy-Invoice* : 
 
+- Open for contributions. 
+- If you have any feature for this project you can contribute
+- You can make something better, contribute.
 
-
-![Screenshot 2025-01-30 134157](https://github.com/user-attachments/assets/43c1b37d-7bf4-454a-8f23-d4d85b95339e)
+![ezy Invoice](https://github.com/user-attachments/assets/e82ddeea-f14e-4c46-a59c-0e93456f9501)
