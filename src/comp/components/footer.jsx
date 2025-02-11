@@ -56,7 +56,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes glow {
           0% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
           50% { text-shadow: 0 0 20px rgba(255,255,255,0.8); }

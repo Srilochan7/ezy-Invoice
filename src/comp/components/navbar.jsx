@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Function to handle smooth scrolling
@@ -20,13 +22,12 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl flex items-center justify-between">
         {/* Logo */}
         <div className="text-white text-xl font-bold cursor-pointer">
-  <img 
-    src="../assets/nav.png" 
-    alt="Ezy Invoice Logo" 
-    className="w-25 h-auto transition-transform duration-300 ease-in-out hover:scale-110"
-  />
-</div>
-
+          <img 
+            src="../assets/nav.png" 
+            alt="Ezy Invoice Logo" 
+            className="w-25 h-auto transition-transform duration-300 ease-in-out hover:scale-110"
+          />
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6 animate__animated animate__fadeIn">
@@ -40,10 +41,13 @@ const Navbar = () => {
 
           {/* Auth Buttons */}
           <div className="flex items-center gap-4">
-            <button className="text-gray-300 hover:text-white transition-colors duration-200">
-              Sign In
-            </button>
-            <button className="bg-white text-black px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-100 transition-colors duration-200">
+            {/* <button className="text-gray-300 hover:text-white transition-colors duration-200">
+              Generate Invoice
+            </button> */}
+            <button
+              // onClick={() => navigate('/generate')}
+              className="bg-white text-black px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-100 transition-colors duration-200"
+            >
               Get Started
               <span className="text-lg">⚡️</span>
             </button>
@@ -102,9 +106,12 @@ const Navbar = () => {
                 onClick={() => scrollToSection('section2')}
                 className="block w-full text-left px-4 py-3 text-white hover:bg-gray-50 transition-colors duration-200"
               >
-                Sign In
+                Generte <br/> Invoice
               </button>
-              <button className="block w-full text-left px-4 py-3 text-white hover:bg-gray-50 transition-colors duration-200">
+              <button 
+                // onClick={() => navigate('/generate')}
+                className="block w-full text-left px-4 py-3 text-white hover:bg-gray-50 transition-colors duration-200"
+              >
                 Get Started
               </button>
             </div>
