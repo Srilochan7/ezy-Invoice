@@ -31,7 +31,7 @@ const AuthenticatedHero = () => {
                 <span className="relative z-10">Go to Dashboard</span>
               </button>
               <button
-                onClick={() => window.location.href = '/create-invoice'}
+                onClick={() => window.location.href = '/generate-invoice'}
                 className="relative inline-flex overflow-hidden rounded-lg bg-white px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base font-medium text-black shadow-lg transition-all duration-300 ease-in-out hover:text-white disabled:opacity-50 disabled:cursor-not-allowed after:absolute after:left-0 after:top-0 after:-z-10 after:h-full after:w-0 after:rounded after:bg-violet-500 after:transition-all after:duration-300 after:ease-in-out hover:bg-violet-500 hover:after:w-full"
               >
                 Create New Invoice

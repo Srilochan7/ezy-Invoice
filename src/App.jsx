@@ -2,8 +2,9 @@ import React from 'react';
 import Hero from './comp/components/hero';
 import Features from './comp/components/features'
 import Footer from './comp/components/footer';
-import Generate from './comp/pages/generate';
+import InvoiceGenerator from './comp/pages/generate';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from './comp/components/navbar';
 
 
 
@@ -20,7 +21,7 @@ function App() {
           <Footer/>
         </>
       } />
-      <Route path="/generate" element={<Generate />} />
+      <Route path="/generate-invoice" element={<InvoiceGenerator />} />
 
     </Routes>
 
