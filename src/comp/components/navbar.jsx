@@ -62,7 +62,7 @@ const Navbar = () => {
                   Features
                 </button>
                 <button
-                  onClick={() => navigate('/invoices')}
+                  onClick={() => navigate('/pricing')}
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
                   Pricing
@@ -187,7 +187,7 @@ const Navbar = () => {
                   </button>
                   <button
                     onClick={() => {
-                      navigate('/invoices');
+                      navigate('/pricing');
                       setIsMenuOpen(false);
                     }}
                     className="block w-full text-left px-4 py-3 text-white hover:bg-gray-800 transition-colors duration-200"
