@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 
 const Pricing = () => {
   const [billingCycle, setBillingCycle] = useState('monthly');
-  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [selectedPlan, setSelectedPlan] = useState("Free");
 
   const plans = [
     {
@@ -59,25 +59,28 @@ const Pricing = () => {
     setSelectedPlan(planName);
   };
 
+  useEffect(() => {
+    // Trigger fade-in animation when the component is mounted
+    const pricingSection = document.querySelector('.pricing-section');
+    pricingSection.classList.add('fadeIn');
+  }, []);
+
   return (
     <div>
-      <Navbar />
-      <div className="min-h-screen bg-black text-white pt-24 pb-8 relative">
-        {/* Simple Grid Background */}
-        <div 
-            className="absolute inset-0"
-            style={{
-              background: `
-                linear-gradient(to right, black, transparent 15%, transparent 85%, black),
-                linear-gradient(to bottom, black, transparent 15%, transparent 85%, black),
-                linear-gradient(to right, rgba(75, 75, 75, 0.3) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(75, 75, 75, 0.3) 1px, transparent 1px)
-              `,
-              backgroundSize: '100% 100%, 100% 100%, 40px 40px, 40px 40px',
-              opacity: 0.8
-            }}
-          />
-    
+      <div className="min-h-screen bg-black text-white pt-24 pb-8 relative pricing-section">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+              linear-gradient(to right, black, transparent 15%, transparent 85%, black),
+              linear-gradient(to bottom, black, transparent 15%, transparent 85%, black),
+              linear-gradient(to right, rgba(75, 75, 75, 0.3) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(75, 75, 75, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '100% 100%, 100% 100%, 40px 40px, 40px 40px',
+            opacity: 1
+          }}
+        />
 
         <style>
           {`
@@ -98,6 +101,7 @@ const Pricing = () => {
 
             .feature-item {
               opacity: 0;
+              transform: translateY(20px);
               animation: fadeIn 0.5s ease-out forwards;
             }
 
@@ -122,6 +126,21 @@ const Pricing = () => {
               to {
                 opacity: 1;
                 transform: translateY(0);
+              }
+            }
+
+            /* Fade-in animation for the entire page */
+            .fadeIn {
+              opacity: 0;
+              animation: fadeInPage 1s ease-out forwards;
+            }
+
+            @keyframes fadeInPage {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
               }
             }
           `}
@@ -171,10 +190,9 @@ const Pricing = () => {
 
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, featureIndex) => (
-                    <li 
-                      key={feature} 
+                    <li
+                      key={feature}
                       className="flex items-center gap-2 feature-item"
-                      style={{ animationDelay: `${0.1 + featureIndex * 0.1}s` }}
                     >
                       <svg
                         className="w-5 h-5 text-purple-500"

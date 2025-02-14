@@ -98,11 +98,15 @@ import React from 'react';
 import { SignUpButton, useAuth } from "@clerk/clerk-react";
 import Navbar from './navbar';
 import AuthenticatedHero from '../pages/authenticated-hero';
+import { div } from 'framer-motion/client';
+import Features from '../components/features'
+import Content from '../pages/content'
 
 
 
 const UnauthenticatedHero = () => {
   return (
+    <div>
     <div className="relative min-h-screen">
       <div className="mx-auto max-w-7xl text-center py-12 md:py-20">
       <button className="mb-6 md:mb-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 md:px-4 py-2 text-xs md:text-sm text-white backdrop-blur-sm hover:bg-white/20">
@@ -130,6 +134,8 @@ const UnauthenticatedHero = () => {
         </button>
       </SignUpButton>
     </div>
+    </div>
+    <Features/>
     </div>
   );
 };
@@ -162,7 +168,7 @@ const Hero = () => {
 
       {/* Hero Content */}
       <main className="relative z-10 px-4 md:px-6 pt-16 md:pt-20">
-        {isSignedIn ? <AuthenticatedHero /> : <UnauthenticatedHero />}
+        {isSignedIn ? <Content /> : <UnauthenticatedHero />}
       </main>
     </div>
   );

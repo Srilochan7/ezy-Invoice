@@ -79,14 +79,68 @@ const InvoiceGenerator = () => {
   };
 
   const downloadPDF = async () => {
-    const invoice = document.getElementById('invoice-template');
-    const canvas = await html2canvas(invoice);
-    const imgData = canvas.toDataURL('image/png');
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save(`invoice-${invoiceData.invoiceNo}.pdf`);
+    try {
+      const invoice = document.getElementById('invoice-template');
+      
+      const canvas = await html2canvas(invoice, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        onclone: (clonedDoc) => {
+          const clonedElement = clonedDoc.getElementById('invoice-template');
+          if (clonedElement) {
+            clonedElement.style.display = 'block';
+          }
+        }
+      });
+
+      const imgWidth = 210;
+      const pageHeight = 297;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      
+      pdf.addImage(
+        canvas.toDataURL('image/jpeg', 1.0),
+        'JPEG',
+        0,
+        0,
+        imgWidth,
+        imgHeight,
+        '',
+        'FAST'
+      );
+
+      if (imgHeight > pageHeight) {
+        let remainingHeight = imgHeight;
+        let position = 0;
+        
+        while (remainingHeight > 0) {
+          position -= pageHeight;
+          remainingHeight -= pageHeight;
+          
+          if (remainingHeight > 0) {
+            pdf.addPage();
+            pdf.addImage(
+              canvas.toDataURL('image/jpeg', 1.0),
+              'JPEG',
+              0,
+              position,
+              imgWidth,
+              imgHeight,
+              '',
+              'FAST'
+            );
+          }
+        }
+      }
+
+      pdf.save(`invoice-${invoiceData.invoiceNo || 'draft'}.pdf`);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('There was an error generating the PDF. Please try again.');
+    }
   };
 
   return (
